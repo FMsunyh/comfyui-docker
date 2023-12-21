@@ -1,0 +1,27 @@
+version: '3.9'
+
+x-base_service: &base_service
+  ports:
+    - "${WEBUI_PORT:-7860}:7860"
+    - "8080:8080"
+  # volumes:
+  #   - &v1 ./data:/data
+  #   - &v2 ./output:/output
+  stop_signal: SIGKILL
+  tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - driver: nvidia
+            device_ids: [ '0' ]
+            capabilities: [ compute, utility ]
+
+services:
+  comfy: &comfy
+    <<: *base_service
+    container_name: comfyui
+    build: .
+    image: registry.cn-shenzhen.aliyuncs.com/ai_base/comfyui:100
+    environment:
+      - CLI_ARGS=
