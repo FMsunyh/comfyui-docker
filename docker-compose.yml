@@ -22,6 +22,6 @@ services:
     <<: *base_service
     container_name: comfyui
     build: .
-    image: registry.cn-shenzhen.aliyuncs.com/ai_base/comfyui:101
+    image: registry.cn-shenzhen.aliyuncs.com/ai_base/comfyui:102
     environment:
       - CLI_ARGS=

@@ -12,6 +12,7 @@ RUN . /clone.sh ComfyUI_Custom_Nodes_AlekPet https://github.com/AlekPet/ComfyUI_
 RUN . /clone.sh sdxl_prompt_styler https://github.com/twri/sdxl_prompt_styler.git 95eea10c7024376903cee1185088d50c0965299d
 RUN . /clone.sh ComfyUI-Custom-Scripts https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git 27555d4f71bb4e24b87571f89eab2b4a06677bb6
 RUN . /clone.sh ComfyUI-AnimateDiff-Evolved https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git 27f0d2a8211634edf1bf0c269d92c8b03ba72886
+RUN . /clone.sh ComfyUI-Advanced-ControlNet  https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet.git f4af0e3e0f3128d7029009bbbb743bc959d58c3e
 
 FROM fmsunyh/sd-auto:75
 
@@ -19,7 +20,7 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 ENV ROOT=/ComfyUI
-WORKDIR ${ROOT}
+WORKDIR ${ROOT}   
 
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 RUN --mount=type=cache,target=/var/cache/apt \
@@ -54,6 +55,7 @@ COPY --from=download /repositories/ComfyUI_Custom_Nodes_AlekPet ${ROOT}/custom_n
 COPY --from=download /repositories/sdxl_prompt_styler ${ROOT}/custom_nodes/sdxl_prompt_styler
 COPY --from=download /repositories/ComfyUI-Custom-Scripts ${ROOT}/custom_nodes/ComfyUI-Custom-Scripts
 COPY --from=download /repositories/ComfyUI-AnimateDiff-Evolved ${ROOT}/custom_nodes/ComfyUI-AnimateDiff-Evolved
+COPY --from=download /repositories/ComfyUI-Advanced-ControlNet ${ROOT}/custom_nodes/ComfyUI-Advanced-ControlNet
 
 COPY ./data/ComfyUI-AnimateDiff-Evolved/models ${ROOT}/custom_nodes/ComfyUI-AnimateDiff-Evolved/models
 COPY ./data/ComfyUI-AnimateDiff-Evolved/motion_lora ${ROOT}/custom_nodes/ComfyUI-AnimateDiff-Evolved/motion_lora
