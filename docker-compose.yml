@@ -23,7 +23,7 @@ services:
     profiles: [ "flux" ]
     container_name: comfyui-flux
     ports:
-      - "${WEBUI_PORT:-68188}:7860"
+      - "${WEBUI_PORT:-62799}:7860"
     volumes:
       - &v1 ./volumes/flux/data:/data
       - &v2 ./volumes/flux/output:/output
@@ -38,7 +38,7 @@ services:
     profiles: [ "comfyui" ]
     container_name: comfyui
     ports:
-      - "${WEBUI_PORT:-68188}:7860"
+      - "${WEBUI_PORT:-62799}:7860"
     volumes:
       - &v1 ./volumes/comfyui/data:/data
       - &v2 ./volumes/comfyui/output:/output
