@@ -36,13 +36,17 @@ WORKDIR ${APP_DIR}
 # pip 镜像
 RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 
-# 克隆 ComfyUI 并安装依赖
+# 将 ComfyUI 克隆为中间缓存层（避免频繁变动）
+# 注意：尽量提前克隆本地，然后 COPY，否则 clone 无法缓存
+RUN git clone https://github.com/comfyanonymous/ComfyUI.git ${APP_DIR}
+
+# 固定版本，避免不必要更新
+WORKDIR ${APP_DIR}
+RUN git checkout 2f7d8159c32de22c15fbeea7ff9063f2231586bb
+
+# 安装 ComfyUI 依赖（利用 pip 缓存挂载）
 RUN --mount=type=cache,target=${PIP_CACHE_DIR} \
-  git clone https://github.com/comfyanonymous/ComfyUI.git ${APP_DIR} && \
-  cd ${APP_DIR} && \
-  git checkout master && \
-  git reset --hard 2f7d8159c32de22c15fbeea7ff9063f2231586bb && \
-  pip install --no-cache-dir -r requirements.txt
+  pip install -r requirements.txt
 
 # 拷贝脚本文件到 /docker 目录，确保权限没问题
 COPY --link --chown=${USERNAME}:${USERNAME} . /docker/
@@ -52,7 +56,7 @@ RUN chmod u+x /docker/entrypoint.sh && cp /docker/extra_model_paths.yaml ${APP_D
 
 # 安装额外 requirements
 RUN --mount=type=cache,target=${PIP_CACHE_DIR} \
-  pip install --no-cache-dir -r /docker/requirements.txt
+  pip install -r /docker/requirements.txt
 
 ENV NVIDIA_VISIBLE_DEVICES=all \
   PYTHONPATH="${PYTHONPATH}:${PWD}" \
@@ -61,4 +65,4 @@ ENV NVIDIA_VISIBLE_DEVICES=all \
 EXPOSE 7860
 
 ENTRYPOINT ["/docker/entrypoint.sh"]
-CMD ["python", "-u", "main.py", "--listen", "--port", "7860"]
+CMD ["sh", "-c", "python -u main.py --listen $CLI_ARGS"]
