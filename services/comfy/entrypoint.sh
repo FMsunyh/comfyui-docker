@@ -6,11 +6,12 @@ declare -A MOUNTS
 
 MOUNTS["${APP_DIR}/.cache"]="/data/.cache"
 MOUNTS["${APP_DIR}/input"]="/data/input"
-MOUNTS["${APP_DIR}/output"]="/data/output"
 MOUNTS["${APP_DIR}/temp"]="/data/temp"
 MOUNTS["${APP_DIR}/custom_nodes"]="/data/custom_nodes"
 MOUNTS["${APP_DIR}/models"]="/data/models"
 MOUNTS["${APP_DIR}/user/default/workflows"]="/data/user/default/workflows"
+
+MOUNTS["${APP_DIR}/output"]="/output"
 
 echo "[INFO] Setting up mount directories..."
 
