@@ -26,3 +26,11 @@ bash /work/comfyui-docker/setup/setup_flux.sh /work/comfyui-docker/volumes
 ```bash
 pkill -f wget
 ```
+
+## 问题解决
+- huggingface Username/Password Authentication Failed.
+```
+https://discuss.huggingface.co/t/private-repo-wget-download-not-working-why/55934
+
+wget --header="Authorization: Bearer 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" --timeout=30 --tries=3 --waitretry=5 -c -O "$output" "$url" &
+```
