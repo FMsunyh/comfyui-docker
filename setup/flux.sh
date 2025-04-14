@@ -10,10 +10,7 @@ UNET_DIR="$BASE_DIR/volumes/flux/data/models/unet"
 CLIP_DIR="$BASE_DIR/volumes/flux/data/models/clip"
 VAE_DIR="$BASE_DIR/volumes/flux/data/models/vae"
 
-# ========== 创建目录 ==========
-create_dir_if_not_exists "$UNET_DIR"
-create_dir_if_not_exists "$CLIP_DIR"
-create_dir_if_not_exists "$VAE_DIR"
+
 
 # ========== 工具函数 ==========
 
@@ -46,6 +43,11 @@ download_if_not_exists() {
     fi
   fi
 }
+
+# ========== 创建目录 ==========
+create_dir_if_not_exists "$UNET_DIR"
+create_dir_if_not_exists "$CLIP_DIR"
+create_dir_if_not_exists "$VAE_DIR"
 
 # ========== 下载模型 ==========
 download_if_not_exists "$UNET_DIR/flux1-dev-fp8.safetensors" \
