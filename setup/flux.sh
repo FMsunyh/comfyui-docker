@@ -34,7 +34,7 @@ download_if_not_exists() {
     echo "✅ 文件已存在，跳过下载：$output"
   else
     echo "⬇️ 开始下载：$output"
-    wget --timeout=30 --tries=3 --waitretry=5 -c -O "$output" "$url" &
+    wget --header="Authorization: Bearer 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" --timeout=30 --tries=3 --waitretry=5 -c -O "$output" "$url" &
 
     ((CURRENT_JOBS++))
     if (( CURRENT_JOBS >= MAX_JOBS )); then
