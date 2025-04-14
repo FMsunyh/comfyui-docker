@@ -27,7 +27,7 @@ services:
     volumes:
       - &v1 ./volumes/flux/data:/data
       - &v2 /tmp/output111:/data/output
-      - &v3 ./volumes/flux/output:/data/output
+      # - &v3 ./volumes/flux/output:/data/output
 
     environment:
       - CLI_ARGS=--port 7860 --disable-cuda-malloc
