@@ -21,8 +21,8 @@ services:
     ports:
       - "${WEBUI_PORT:-7860}:7860"
     volumes:
-      - &v1 ./flux/data:/data
-      - &v2 ./flux/output:/output
+      - &v1 ./volumes/flux/data:/data
+      - &v2 ./volumes/flux/output:/output
 
     build: ./services/comfy/
     image: fmsunyh/sd-comfy:latest
