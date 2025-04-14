@@ -41,7 +41,8 @@ services:
       - "${WEBUI_PORT:-62799}:7860"
     volumes:
       - &v1 ./volumes/comfyui/data:/data
-      - &v2 ./volumes/comfyui/output:/output
+      # - &v2 ./volumes/comfyui/output:/output
+      - &v2 /tmp/output111:/output
 
     environment:
       - CLI_ARGS=--port 7860 --disable-cuda-malloc
