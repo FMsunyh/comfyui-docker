@@ -17,7 +17,7 @@ docker-compose --profile flux up -d
 
 3. 下载模型
 ```bash
-bash /work/comfyui-docker/setup/setup_flux.sh /work/comfyui-docker/volumes
+bash setup/flux.sh "$PWD"
 ```
 
 ## 相关操作
