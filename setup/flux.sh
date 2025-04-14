@@ -39,8 +39,14 @@ create_dir_if_not_exists "$CLIP_DIR"
 create_dir_if_not_exists "$VAE_DIR"
 
 # ========== 下载模型 ==========
-download_if_not_exists "$UNET_DIR/flux1-dev.safetensors" \
+download_if_not_exists "$UNET_DIR/flux1-dev-fp8.safetensors" \
   "https://huggingface.co/lllyasviel/flux1_dev/resolve/main/flux1-dev-fp8.safetensors?download=true"
+
+download_if_not_exists "$CLIP_DIR/t5xxl_fp8_e4m3fn.safetensors" \
+  "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors?download=true"
+
+download_if_not_exists "$UNET_DIR/flux1-dev.safetensors" \
+  "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors?download=true"
 
 download_if_not_exists "$CLIP_DIR/t5xxl_fp16.safetensors" \
   "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors?download=true"
