@@ -23,10 +23,25 @@ services:
     profiles: [ "flux" ]
     container_name: comfyui-flux
     ports:
-      - "${WEBUI_PORT:-7860}:7860"
+      - "${WEBUI_PORT:-8188}:7860"
     volumes:
       - &v1 ./volumes/flux/data:/data
       - &v2 ./volumes/flux/output:/output
+
+    environment:
+      - CLI_ARGS=--port 7860 --disable-cuda-malloc
+    networks:
+      - shared-network
+
+  comfyui: &automatic
+    <<: *base_service
+    profiles: [ "comfyui" ]
+    container_name: comfyui
+    ports:
+      - "${WEBUI_PORT:-8188}:7860"
+    volumes:
+      - &v1 ./volumes/comfyui/data:/data
+      - &v2 ./volumes/comfyui/output:/output
 
     environment:
       - CLI_ARGS=--port 7860 --disable-cuda-malloc
