@@ -1,33 +1,65 @@
-version: '3.8'
+x-base_service: &base_service
+  stop_signal: SIGKILL
+  tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - driver: nvidia
+            device_ids: [ '0' ]
+            capabilities: [ compute, utility ]
+  extra_hosts:
+    - "raw.githubusercontent.com:185.199.108.133"
+
+name: comfyui
 
 services:
-  comfyui:
+  flux: &automatic
+    <<: *base_service
+    profiles: [ "flux" ]
+    container_name: comfyui-flux
+    ports:
+      - "${WEBUI_PORT:-7860}:7860"
+    volumes:
+      - &v1 ./flux/data:/data
+      - &v2 ./flux/output:/output
+
     build: ./services/comfy/
     image: fmsunyh/sd-comfy:latest
-    container_name: comfyui
-    ports:
-      - "${WEBUI_PORT:-8188}:7860"
-    volumes:
-      - ./data:/data
-      # - /tmp/output:/data/output
-      # - ./data/output:/data/output
-
-    user: "aigc:aigc" # 容器进程以 aigc 用户身份运行
-    stop_signal: SIGKILL
-    tty: true
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              device_ids: [ '0' ]
-              capabilities: [ compute, utility ]
-    networks:
-      - shared-network
     environment:
       - CLI_ARGS=--port 7860 --disable-cuda-malloc
-    extra_hosts:
-      - "raw.githubusercontent.com:185.199.108.133"
+    networks:
+      - shared-network
+    stop_signal: SIGKILL
+    tty: true
+    user: "aigc:aigc" # 容器进程以 aigc 用户身份运行
+    # comfyui:
+    #   build: ./services/comfy/
+    #   image: fmsunyh/sd-comfy:latest
+    #   container_name: comfyui
+    #   ports:
+    #     - "${WEBUI_PORT:-8188}:7860"
+    #   volumes:
+    #     - ./data:/data
+    #     # - /tmp/output:/data/output
+    #     # - ./data/output:/data/output
+
+    #   user: "aigc:aigc" # 容器进程以 aigc 用户身份运行
+    #   stop_signal: SIGKILL
+    #   tty: true
+    #   deploy:
+    #     resources:
+    #       reservations:
+    #         devices:
+    #           - driver: nvidia
+    #             device_ids: [ '0' ]
+    #             capabilities: [ compute, utility ]
+    #   networks:
+    #     - shared-network
+    #   environment:
+    #     - CLI_ARGS=--port 7860 --disable-cuda-malloc
+    #   extra_hosts:
+    # - "raw.githubusercontent.com:185.199.108.133"
 
 networks:
   shared-network:
