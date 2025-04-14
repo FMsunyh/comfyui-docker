@@ -26,8 +26,8 @@ services:
       - "${WEBUI_PORT:-62799}:7860"
     volumes:
       - &v1 ./volumes/flux/data:/data
-      - &v2 /tmp/output111:/output
-      # - &v2 ./volumes/flux/output:/output
+      # - &v2 /tmp/output111:/output
+      - &v2 ./volumes/flux/output:/output
 
     environment:
       - CLI_ARGS=--port 7860 --disable-cuda-malloc
