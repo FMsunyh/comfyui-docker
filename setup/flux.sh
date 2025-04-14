@@ -1,11 +1,19 @@
 #!/bin/bash
 
 # ========== 参数设置 ==========
+MAX_JOBS=4  # 最多同时运行的下载任务数
+CURRENT_JOBS=0
+
 BASE_DIR="${1:-/work/comfyui-docker/}"
 
 UNET_DIR="$BASE_DIR/volumes/flux/data/models/unet"
 CLIP_DIR="$BASE_DIR/volumes/flux/data/models/clip"
 VAE_DIR="$BASE_DIR/volumes/flux/data/models/vae"
+
+# ========== 创建目录 ==========
+create_dir_if_not_exists "$UNET_DIR"
+create_dir_if_not_exists "$CLIP_DIR"
+create_dir_if_not_exists "$VAE_DIR"
 
 # ========== 工具函数 ==========
 
@@ -29,14 +37,15 @@ download_if_not_exists() {
     echo "✅ 文件已存在，跳过下载：$output"
   else
     echo "⬇️ 开始下载：$output"
-    wget -c -O "$output" "$url" &
+    wget --timeout=30 --tries=3 --waitretry=5 -c -O "$output" "$url" &
+
+    ((CURRENT_JOBS++))
+    if (( CURRENT_JOBS >= MAX_JOBS )); then
+      wait -n  # 等待任意一个任务结束
+      ((CURRENT_JOBS--))
+    fi
   fi
 }
-
-# ========== 创建目录 ==========
-create_dir_if_not_exists "$UNET_DIR"
-create_dir_if_not_exists "$CLIP_DIR"
-create_dir_if_not_exists "$VAE_DIR"
 
 # ========== 下载模型 ==========
 download_if_not_exists "$UNET_DIR/flux1-dev-fp8.safetensors" \
@@ -62,6 +71,6 @@ wait
 
 echo "🎉 所有模型文件已下载完成！"
 
-
+# ========== 拷贝文件 ==========
 cp "$BASE_DIR/workflows/flux_dev_example.json" "$BASE_DIR/volumes/flux/data/user/default/workflows"
 # bash setup_flux.sh /your/custom/path
