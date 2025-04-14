@@ -20,32 +20,18 @@ create_dir_if_not_exists() {
   fi
 }
 
-# 下载前校验本地文件是否与线上一致（通过 Content-Length）
+# 如果文件不存在则下载
 download_if_not_exists() {
   local output="$1"
   local url="$2"
 
   if [ -f "$output" ]; then
-    local local_size
-    local_size=$(stat -c %s "$output")
-
-    # 获取远程文件大小
-    remote_size=$(curl -sI "$url" | grep -i Content-Length | awk '{print $2}' | tr -d '\r')
-
-    if [ "$local_size" = "$remote_size" ]; then
-      echo "✅ 文件已存在且大小一致，跳过下载：$output"
-      return
-    else
-      echo "⚠️  文件大小不一致，重新下载：$output"
-      rm -f "$output"
-    fi
+    echo "✅ 文件已存在，跳过下载：$output"
   else
     echo "⬇️ 开始下载：$output"
+    wget -c -O "$output" "$url" &
   fi
-
-  wget -c -O "$output" "$url" &
 }
-
 
 # ========== 创建目录 ==========
 create_dir_if_not_exists "$UNET_DIR"
