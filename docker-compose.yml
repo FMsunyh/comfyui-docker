@@ -1,27 +1,34 @@
-version: '3.9'
-
-x-base_service: &base_service
-  ports:
-    - "${WEBUI_PORT:-7860}:7860"
-    - "8080:8080"
-  volumes:
-    #   - &v1 ./data:/data
-    - &v1 ./output:/ComfyUI/output
-  stop_signal: SIGKILL
-  tty: true
-  deploy:
-    resources:
-      reservations:
-        devices:
-          - driver: nvidia
-            device_ids: [ '0' ]
-            capabilities: [ compute, utility ]
+version: '3.8'
 
 services:
-  comfy: &comfy
-    <<: *base_service
+  comfyui:
+    build: ./services/comfy/
+    image: fmsunyh/sd-comfy:latest
     container_name: comfyui
-    build: .
-    image: registry.cn-shenzhen.aliyuncs.com/ai_base/comfyui:102
+    ports:
+      - "${WEBUI_PORT:-8188}:7860"
+    volumes:
+      - ./data:/data
+      # - /tmp/output:/data/output
+      # - ./data/output:/data/output
+
+    user: "aigc:aigc" # 容器进程以 aigc 用户身份运行
+    stop_signal: SIGKILL
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ compute, utility ]
+    networks:
+      - shared-network
     environment:
-      - CLI_ARGS=
+      - CLI_ARGS=--port 7860 --disable-cuda-malloc
+    extra_hosts:
+      - "raw.githubusercontent.com:185.199.108.133"
+
+networks:
+  shared-network:
+    external: true # 使用外部已经存在的网络
