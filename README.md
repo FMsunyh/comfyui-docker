@@ -17,7 +17,10 @@ docker-compose --profile flux up -d
 
 3. 下载模型
 ```bash
+cd comfyui-docker
 bash setup/flux.sh "$PWD"
+bash setup/wan2.1.sh "$PWD"
+bash setup/wan2.1_Comfy-Org.sh "$PWD"
 ```
 
 ## 相关操作
