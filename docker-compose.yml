@@ -65,6 +65,7 @@ services:
     volumes:
       - &v1 ./volumes/comfyui/data:/data
       - &v2 ./volumes/comfyui/output:/output
+      - &v3 ./volumes/comfyui/data/extra_model_paths.yaml:/home/aigc/app/extra_model_paths.yaml
 
     environment:
       - CLI_ARGS=--port 7860 --disable-cuda-malloc
