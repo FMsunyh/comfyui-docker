@@ -1,31 +1,7 @@
-#!/bin/bash
-# host_setup.sh
-
-for d in volumes/flux volumes/wan2.1 volumes/comfyui; do
-  for subdir in data output; do
-    dir="$d/$subdir"
-    if [ -d "$dir" ]; then
-      echo "Directory $dir already exists, skipping."
-    else
-      mkdir -p "$dir"
-      echo "Created directory $dir"
-    fi
-  done
-
-  # Set ownership if main folder exists
-  if [ -d "$d" ]; then
-    chown -R aigc:aigc "$d"
-    echo "Set ownership for $d"
-  fi
-done
-
-
-# ==========  创建extra_model_paths.yaml ==========
-cat <<EOF > volumes/comfyui/data/extra_model_paths.yaml
 flux:
   base_path: /volumes/flux/data/models
 
-  adetailer: adetailer
+  checkpoints: checkpointsadetailer: adetailer
   blip: blip
   checkpoints: checkpoints
   clip: clip
@@ -51,11 +27,12 @@ flux:
   upscale_models: upscale_models
   vae: vae
   vae_approx: vae_approx
+
 
 wan2.1:
   base_path: /volumes/wan2.1/data/models
 
-  adetailer: adetailer
+  checkpoints: checkpointsadetailer: adetailer
   blip: blip
   checkpoints: checkpoints
   clip: clip
@@ -81,4 +58,3 @@ wan2.1:
   upscale_models: upscale_models
   vae: vae
   vae_approx: vae_approx
-EOF
