@@ -1,7 +1,7 @@
 #!/bin/bash
 # host_setup.sh
 
-for d in volumes/flux volumes/wan2.1; do
+for d in volumes/flux volumes/wan2.1 volumes/comfyui; do
   for subdir in data output; do
     dir="$d/$subdir"
     if [ -d "$dir" ]; then
