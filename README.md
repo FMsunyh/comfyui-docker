@@ -43,7 +43,7 @@ github官网 [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 4. 下载插件
     ```bash
     cd comfyui-docker
-    bash clone_or_pull_custom_nodes.sh "$PWD" "comfyui"
+    bash setup/clone_or_pull_custom_nodes.sh "$PWD" "comfyui"
     ```
 
 ## 相关操作

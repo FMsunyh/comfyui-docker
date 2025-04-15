@@ -16,6 +16,17 @@ TARGET_DIR="$BASE_DIR/volumes/$APP/data/custom_nodes"
 # 仓库地址列表（请替换为你真实的10个仓库）
 REPOS=(
   "git@github.com:Comfy-Org/ComfyUI-Manager.git"
+  "git@github.com:justUmen/Bjornulf_custom_nodes.git"
+  "git@github.com:yolain/ComfyUI-Easy-Use.git"
+  "git@github.com:Kosinkadink/ComfyUI-VideoHelperSuite.git"
+  "git@github.com:kijai/ComfyUI-WanVideoWrapper.git"
+  "git@github.com:rgthree/rgthree-comfy.git"
+  "git@github.com:kijai/ComfyUI-KJNodes.git"
+  "git@github.com:Tenney95/ComfyUI-NodeAligner.git"
+  "git@github.com:ssitu/ComfyUI_UltimateSDUpscale.git"
+  "git@github.com:Fannovel16/ComfyUI-Frame-Interpolation.git"
+  "git@github.com:alexopus/ComfyUI-Image-Saver.git"
+  "git@github.com:chflame163/ComfyUI_LayerStyle.git"
 )
 
 MAX_RETRIES=3
