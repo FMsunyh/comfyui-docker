@@ -2,7 +2,7 @@
 ###
  # @Author: fmsunyh fmsunyh@gmail.com
  # @Date: 2025-04-15
- # @Description: 为comyfui应用，下载模型，下载插件
+ # @Description: 为comyfui应用，下载模型
 ###
 
 #!/bin/bash

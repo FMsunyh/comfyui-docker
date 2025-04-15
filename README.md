@@ -39,6 +39,12 @@ github官网 [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
     bash setup/wan2.1_Comfy-Org.sh "$PWD"
     bash setup/comfyui.sh "$PWD"
     ```
+    
+4. 下载插件
+    ```bash
+    cd comfyui-docker
+    bash clone_or_pull_custom_nodes.sh "$PWD" "comfyui"
+    ```
 
 ## 相关操作
 - 杀掉下载脚本进程
