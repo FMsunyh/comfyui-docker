@@ -61,7 +61,7 @@ services:
     profiles: [ "comfyui" ]
     container_name: comfyui
     ports:
-      - "${WEBUI_PORT:-8188}:7860"
+      - "${WEBUI_PORT:-62808}:7860"
     volumes:
       - &v1 ./volumes/comfyui/data:/data
       - &v2 ./volumes/comfyui/output:/output
