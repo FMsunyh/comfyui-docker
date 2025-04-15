@@ -4,13 +4,7 @@ x-base_service: &base_service
 
   stop_signal: SIGKILL
   tty: true
-  deploy:
-    resources:
-      reservations:
-        devices:
-          - driver: nvidia
-            device_ids: [ '0' ]
-            capabilities: [ compute, utility ]
+
   extra_hosts:
     - "raw.githubusercontent.com:185.199.108.133"
   user: "aigc:aigc" # 容器进程以 aigc 用户身份运行
@@ -26,20 +20,48 @@ services:
       - "${WEBUI_PORT:-62799}:7860"
     volumes:
       - &v1 ./volumes/flux/data:/data
-      - &v2 /tmp/output111:/data/output
+      - &v2 /tmp/output111:/output
       # - &v3 ./volumes/flux/output:/data/output
 
     environment:
       - CLI_ARGS=--port 7860 --disable-cuda-malloc
     networks:
       - shared-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ compute, utility ]
 
+  wan2.1: &automatic
+    <<: *base_service
+    profiles: [ "wan2.1" ]
+    container_name: comfyui-wan2.1
+    ports:
+      - "${WEBUI_PORT:-62806}:7860"
+    volumes:
+      - &v1 ./volumes/wan2.1/data:/data
+      - &v2 ./volumes/wan2.1/output:/output
+
+    environment:
+      - CLI_ARGS=--port 7860 --disable-cuda-malloc
+    networks:
+      - shared-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '1' ]
+              capabilities: [ compute, utility ]
   comfyui: &automatic
     <<: *base_service
     profiles: [ "comfyui" ]
     container_name: comfyui
     ports:
-      - "${WEBUI_PORT:-62799}:7860"
+      - "${WEBUI_PORT:-8188}:7860"
     volumes:
       - &v1 ./volumes/comfyui/data:/data
       - &v2 ./volumes/comfyui/output:/output
@@ -48,6 +70,13 @@ services:
       - CLI_ARGS=--port 7860 --disable-cuda-malloc
     networks:
       - shared-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ compute, utility ]
 
 networks:
   shared-network:
