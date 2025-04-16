@@ -13,11 +13,11 @@ CURRENT_JOBS=0
 
 BASE_DIR="${1:-/work/comfyui-docker/}"
 
-# UNET_DIR="$BASE_DIR/volumes/wan2.1/data/models/unet/Kijai"
-CLIP_DIR="$BASE_DIR/volumes/wan2.1/data/models/clip"
-VAE_DIR="$BASE_DIR/volumes/wan2.1/data/models/vae"
-DIFFUSION_MODELS_DIR="$BASE_DIR/volumes/wan2.1/data/models/diffusion_models"
-UPSCALE_MODELS_DIR="$BASE_DIR/volumes/wan2.1/data/models/upscale_models"
+# UNET_DIR="$BASE_DIR/volumes/comyfui/data/models/unet/Kijai"
+CLIP_DIR="$BASE_DIR/volumes/comyfui/data/models/clip"
+VAE_DIR="$BASE_DIR/volumes/comyfui/data/models/vae"
+DIFFUSION_MODELS_DIR="$BASE_DIR/volumes/comyfui/data/models/diffusion_models"
+UPSCALE_MODELS_DIR="$BASE_DIR/volumes/comyfui/data/models/upscale_models"
 
 # ========== 工具函数 ==========
 
