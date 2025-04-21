@@ -9,25 +9,30 @@ github官网 [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
     ```bash
     bash host_setup.sh
     ```
-
 2. 启动容器
 
-- 启动 默认生图
-    端口：62808
+- 启动 正式环境 pro-comfyui
+    端口：62799
     ```
-    docker-compose --profile comfyui up -d
+    docker-compose --profile pro-comfyui up -d
     ```
 
 - 启动 flux生图
-    端口：62799
+    端口：62801
     ```
     docker-compose --profile flux up -d
     ```
 
 - 启动 wan2.1生图
-    端口：62806
+    端口：62802
     ```
     docker-compose --profile wan2.1 up -d
+    ```
+
+- 启动 默认生图,开发环境 dev-comfyui
+    端口：62803
+    ```
+    docker-compose --profile dev-comfyui up -d
     ```
 
 3. 下载模型
@@ -44,6 +49,13 @@ github官网 [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
     ```bash
     cd comfyui-docker
     bash setup/clone_or_pull_custom_nodes.sh "$PWD" "comfyui"
+    ```
+
+5. 部署工作流
+    参数一是当前工作目录，参数2是应用名称
+    ```bash
+    cd comfyui-docker
+    bash setup/copy_workflows.sh "$PWD" "comfyui"
     ```
 
 ## 相关操作

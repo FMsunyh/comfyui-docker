@@ -17,7 +17,7 @@ services:
     profiles: [ "flux" ]
     container_name: comfyui-flux
     ports:
-      - "${WEBUI_PORT:-62799}:7860"
+      - "${WEBUI_PORT:-62801}:7860"
     volumes:
       - &v1 ./volumes/flux/data:/data
       - &v2 /tmp/output111:/output
@@ -40,7 +40,7 @@ services:
     profiles: [ "wan2.1" ]
     container_name: comfyui-wan2.1
     ports:
-      - "${WEBUI_PORT:-62806}:7860"
+      - "${WEBUI_PORT:-62802}:7860"
     volumes:
       - &v1 ./volumes/wan2.1/data:/data
       - &v2 ./volumes/wan2.1/output:/output
@@ -56,15 +56,40 @@ services:
             - driver: nvidia
               device_ids: [ '1' ]
               capabilities: [ compute, utility ]
+
+  comfyui-dev: &automatic
+    <<: *base_service
+    profiles: [ "comfyui-dev" ]
+    container_name: comfyui
+    ports:
+      - "${WEBUI_PORT:-62803}:7860"
+    volumes:
+      - &v1 ./volumes/comfyui-dev/data:/data
+      - &v2 ./volumes/comfyui-dev/output:/output
+      - &v3 ./volumes:/volumes
+      - &v4 ./volumes/comfyui-dev/data/extra_model_paths.yaml:/home/aigc/app/extra_model_paths.yaml
+
+    environment:
+      - CLI_ARGS=--port 7860 --disable-cuda-malloc
+    networks:
+      - shared-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ compute, utility ]
+
   comfyui: &automatic
     <<: *base_service
     profiles: [ "comfyui" ]
     container_name: comfyui
     ports:
-      - "${WEBUI_PORT:-62808}:7860"
+      - "${WEBUI_PORT:-62799}:7860"
     volumes:
       - &v1 ./volumes/comfyui/data:/data
-      - &v2 ./volumes/comfyui/output:/output
+      - &v2 /tmp/output111:/output
       - &v3 ./volumes:/volumes
       - &v4 ./volumes/comfyui/data/extra_model_paths.yaml:/home/aigc/app/extra_model_paths.yaml
 
@@ -77,7 +102,7 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              device_ids: [ '0' ]
+              device_ids: [ '1' ]
               capabilities: [ compute, utility ]
 
 networks:
