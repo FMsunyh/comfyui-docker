@@ -36,6 +36,8 @@ REPOS=(
   "git@github.com:chflame163/ComfyUI_LayerStyle_Advance.git"
   "git@github.com:vuongminh1907/ComfyUI_ZenID.git"
   "git@github.com:Fannovel16/comfyui_controlnet_aux.git"
+
+  "git@github.com:TTPlanetPig/Comfyui_TTP_Toolset.git"
 )
 
 MAX_RETRIES=3
