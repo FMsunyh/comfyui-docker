@@ -9,4 +9,4 @@
 BASE_DIR="${1:-/work/comfyui-docker/}"
 APP="${2:-comfyui}"
 
-cp "$BASE_DIR/workflows/*" "$BASE_DIR/volumes/$APP/data/user/default/workflows"
+cp "$BASE_DIR/workflows/"* "$BASE_DIR/volumes/$APP/data/user/default/workflows"
