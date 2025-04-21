@@ -11,10 +11,10 @@ github官网 [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
     ```
 2. 启动容器
 
-- 启动 正式环境 pro-comfyui
+- 启动 正式环境 comfyui
     端口：62799
     ```
-    docker-compose --profile pro-comfyui up -d
+    docker-compose --profile comfyui up -d
     ```
 
 - 启动 flux生图

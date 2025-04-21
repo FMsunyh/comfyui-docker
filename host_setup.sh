@@ -81,6 +81,9 @@ wan2.1:
   upscale_models: upscale_models
   vae: vae
   vae_approx: vae_approx
+
+other_ui:
+  custom_nodes: /volumes/comfyui-dev/data/custom_nodes
 EOF
 
 

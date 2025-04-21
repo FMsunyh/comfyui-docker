@@ -27,6 +27,15 @@ REPOS=(
   "git@github.com:Fannovel16/ComfyUI-Frame-Interpolation.git"
   "git@github.com:alexopus/ComfyUI-Image-Saver.git"
   "git@github.com:chflame163/ComfyUI_LayerStyle.git"
+
+  "git@github.com:ltdrdata/ComfyUI-Impact-Pack.git"
+  "git@github.com:kijai/ComfyUI-SUPIR.git"
+  "git@github.com:shadowcz007/comfyui-mixlab-nodes.git"
+  "git@github.com:cubiq/ComfyUI_InstantID.git"
+  "git@github.com:cubiq/ComfyUI_essentials.git"
+  "git@github.com:chflame163/ComfyUI_LayerStyle_Advance.git"
+  "git@github.com:vuongminh1907/ComfyUI_ZenID.git"
+  "git@github.com:Fannovel16/comfyui_controlnet_aux.git"
 )
 
 MAX_RETRIES=3
