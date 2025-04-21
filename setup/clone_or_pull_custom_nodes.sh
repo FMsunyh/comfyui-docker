@@ -53,7 +53,8 @@ for REPO in "${REPOS[@]}"; do
   if [ -d "$REPO_NAME/.git" ]; then
     echo "📁 $REPO_NAME already exists, pulling latest changes..."
     cd "$REPO_NAME" || continue
-    git pull
+    git fetch origin
+    git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
     cd ..
   else
     COUNT=0
