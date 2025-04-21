@@ -77,6 +77,7 @@ download_if_not_exists "$UPSCALE_MODELS_DIR"/16xPSNR.pth "https://huggingface.co
 download_if_not_exists "$UPSCALE_MODELS_DIR"/8x_NMKD-Typescale_175k.pth "https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/8x_NMKD-Typescale_175k.pth"
 download_if_not_exists "$UPSCALE_MODELS_DIR"/8x_NMKD-Superscale_150000_G.pth "https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/8x_NMKD-Superscale_150000_G.pth"
 download_if_not_exists "$UPSCALE_MODELS_DIR"/4x_NMKD-Superscale-SP_178000_G.pth "https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x_NMKD-Superscale-SP_178000_G.pth"
+download_if_not_exists "$UPSCALE_MODELS_DIR"/4x_NMKD-Siax_200k.pth "https://huggingface.co/gemasai/4x_NMKD-Siax_200k/resolve/main/4x_NMKD-Siax_200k.pth"
 
 # 等待所有后台任务完成
 wait
