@@ -60,7 +60,7 @@ services:
   comfyui-dev: &automatic
     <<: *base_service
     profiles: [ "comfyui-dev" ]
-    container_name: comfyui
+    container_name: comfyui-dev
     ports:
       - "${WEBUI_PORT:-62803}:7860"
     volumes:
