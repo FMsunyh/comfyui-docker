@@ -42,7 +42,7 @@ github官网 [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
     bash setup/flux.sh "$PWD"
     bash setup/wan2.1.sh "$PWD"
     bash setup/wan2.1_Comfy-Org.sh "$PWD"
-    bash setup/comfyui.sh "$PWD"
+    bash setup/comfyui.sh "$PWD" "comfyui"
     ```
     
 4. 下载插件

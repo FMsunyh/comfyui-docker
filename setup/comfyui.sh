@@ -2,7 +2,7 @@
 ###
  # @Author: fmsunyh fmsunyh@gmail.com
  # @Date: 2025-04-15
- # @Description: 为comyfui应用，下载模型
+ # @Description: 为$APP应用，下载模型
 ###
 
 #!/bin/bash
@@ -12,12 +12,13 @@ MAX_JOBS=4  # 最多同时运行的下载任务数
 CURRENT_JOBS=0
 
 BASE_DIR="${1:-/work/comfyui-docker/}"
+APP="${2:-comfyui}"
 
-# UNET_DIR="$BASE_DIR/volumes/comyfui/data/models/unet/Kijai"
-CLIP_DIR="$BASE_DIR/volumes/comyfui/data/models/clip"
-VAE_DIR="$BASE_DIR/volumes/comyfui/data/models/vae"
-DIFFUSION_MODELS_DIR="$BASE_DIR/volumes/comyfui/data/models/diffusion_models"
-UPSCALE_MODELS_DIR="$BASE_DIR/volumes/comyfui/data/models/upscale_models"
+# UNET_DIR="$BASE_DIR/volumes/$APP/data/models/unet/Kijai"
+CLIP_DIR="$BASE_DIR/volumes/$APP/data/models/clip"
+VAE_DIR="$BASE_DIR/volumes/$APP/data/models/vae"
+DIFFUSION_MODELS_DIR="$BASE_DIR/volumes/$APP/data/models/diffusion_models"
+UPSCALE_MODELS_DIR="$BASE_DIR/volumes/$APP/data/models/upscale_models"
 
 # ========== 工具函数 ==========
 
