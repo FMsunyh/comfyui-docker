@@ -59,19 +59,19 @@ for to_path in "${!MOUNTS[@]}"; do
   fi
 done
 
-echo "🔍 Searching for plugin requirements in $PLUGIN_DIR..."
+# echo "🔍 Searching for plugin requirements in $PLUGIN_DIR..."
 
-# 遍历插件目录，寻找 requirements.txt 并安装依赖
-for plugin in "$PLUGIN_DIR"/*; do
-    if [ -d "$plugin" ]; then
-        if [ -f "$plugin/requirements.txt" ]; then
-            echo "📦 Installing requirements for plugin: $(basename "$plugin")"
-            pip install --no-cache-dir -r "$plugin/requirements.txt"
-        else
-            echo "ℹ️ No requirements.txt found in: $(basename "$plugin")"
-        fi
-    fi
-done
+# # 遍历插件目录，寻找 requirements.txt 并安装依赖
+# for plugin in "$PLUGIN_DIR"/*; do
+#     if [ -d "$plugin" ]; then
+#         if [ -f "$plugin/requirements.txt" ]; then
+#             echo "📦 Installing requirements for plugin: $(basename "$plugin")"
+#             pip install --no-cache-dir -r "$plugin/requirements.txt"
+#         else
+#             echo "ℹ️ No requirements.txt found in: $(basename "$plugin")"
+#         fi
+#     fi
+# done
 
 
 # 如果存在自定义启动脚本，运行它
