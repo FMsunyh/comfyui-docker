@@ -62,7 +62,7 @@ github官网 [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
     
     ```bash
     cd comfyui-docker
-    bash setup/download_models.sh "$PWD" "comfyui-dev"
+    bash setup/download_models.sh "$PWD" "comfyui"
 
 ## 相关操作
 - 杀掉下载脚本进程
