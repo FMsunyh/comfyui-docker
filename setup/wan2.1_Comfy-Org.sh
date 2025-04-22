@@ -17,6 +17,7 @@ BASE_DIR="${1:-/work/comfyui-docker/}"
 CLIP_DIR="$BASE_DIR/volumes/wan2.1/data/models/clip/Comfy-Org"
 VAE_DIR="$BASE_DIR/volumes/wan2.1/data/models/vae/Comfy-Org"
 DIFFUSION_MODELS_DIR="$BASE_DIR/volumes/wan2.1/data/models/diffusion_models/Comfy-Org"
+CLIP_VISION_DIR="$BASE_DIR/volumes/wan2.1/data/models/clip_vision/Comfy-Org"
 
 # ========== 工具函数 ==========
 
@@ -55,6 +56,7 @@ download_if_not_exists() {
 create_dir_if_not_exists "$CLIP_DIR"
 create_dir_if_not_exists "$VAE_DIR"
 create_dir_if_not_exists "$DIFFUSION_MODELS_DIR"
+create_dir_if_not_exists "$CLIP_VISION_DIR"
 
 # 下载文件列表
 download_if_not_exists "$VAE_DIR"/wan_2.1_vae.safetensors "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors"
@@ -66,6 +68,9 @@ download_if_not_exists "$DIFFUSION_MODELS_DIR"/wan2.1_t2v_1.3B_fp16.safetensors 
 
 download_if_not_exists "$CLIP_DIR"/umt5_xxl_fp16.safetensors "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors"
 download_if_not_exists "$CLIP_DIR"/umt5_xxl_fp8_e4m3fn_scaled.safetensors "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors"
+
+download_if_not_exists "$CLIP_VISION_DIR"/clip_vision_h.safetensors "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors"
+
 
 # 等待所有后台任务完成
 wait
