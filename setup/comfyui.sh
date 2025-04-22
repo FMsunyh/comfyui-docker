@@ -82,6 +82,7 @@ download_if_not_exists "$UPSCALE_MODELS_DIR"/8x_NMKD-Superscale_150000_G.pth "ht
 download_if_not_exists "$UPSCALE_MODELS_DIR"/4x_NMKD-Superscale-SP_178000_G.pth "https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4x_NMKD-Superscale-SP_178000_G.pth"
 download_if_not_exists "$UPSCALE_MODELS_DIR"/4x_NMKD-Siax_200k.pth "https://huggingface.co/gemasai/4x_NMKD-Siax_200k/resolve/main/4x_NMKD-Siax_200k.pth"
 
+# 只适合图像放大，或者低配电脑
 download_if_not_exists "$LORAS_DIR"/Flux-Dev-4-step.safetensors "https://liblibai-online.liblib.cloud/web/model/84cd9ecbef5b4333afb1125200e50242/c41f8106c9f02c94f89c0fbad50f143409b89d5007916e573cda39b78a3d8a37.safetensors?auth_key=1745231116-305efad2866e4e458f501a0399f8c6fc-0-113ca53dd39d41bbed413f6e324694d4&attname=Flux%20Dev%E6%A8%A1%E5%9E%8B4%E6%AD%A5%E5%87%BA%E5%9B%BElora_Flux%20Dev%E6%A8%A1%E5%9E%8B4%E6%AD%A5%E5%87%BA%E5%9B%BElora_Flux%20Dev%204-step.safetensors"
 
 # 等待所有后台任务完成
