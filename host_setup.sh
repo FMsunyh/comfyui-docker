@@ -82,6 +82,36 @@ wan2.1:
   vae: vae
   vae_approx: vae_approx
 
+comfyui-dev:
+  base_path: /volumes/comfyui-dev/data/models
+
+  adetailer: adetailer
+  blip: blip
+  checkpoints: checkpoints
+  clip: clip
+  clip_vision: clip_vision
+  configs: configs
+  controlnet: controlnet
+  deepdanbooru: deepdanbooru
+  diffusers: diffusers
+  diffusion_models: diffusion_models
+  gligen: gligen
+  hypernetworks: hypernetworks
+  karlo: karlo
+  LLM: LLM
+  loras: loras
+  LyCORIS: LyCORIS
+  midas: midas
+  openpose: openpose
+  photomaker: photomaker
+  pulid: pulid
+  style_models: style_models
+  text encoders: text encoders
+  unet: unet
+  upscale_models: upscale_models
+  vae: vae
+  vae_approx: vae_approx
+
 other_ui:
   custom_nodes: /volumes/comfyui-dev/data/custom_nodes
 EOF
