@@ -58,6 +58,12 @@ github官网 [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
     bash setup/copy_workflows.sh "$PWD" "comfyui"
     ```
 
+6. 下载常用的模型
+    
+    ```bash
+    cd comfyui-docker
+    bash setup/download_models.sh "$PWD" "comfyui-dev"
+
 ## 相关操作
 - 杀掉下载脚本进程
 
