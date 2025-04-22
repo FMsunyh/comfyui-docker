@@ -4,10 +4,12 @@ set -Eeuo pipefail
 
 declare -A MOUNTS
 
+PLUGIN_DIR="/data/custom_nodes"
+
 MOUNTS["${APP_DIR}/.cache"]="/data/.cache"
 MOUNTS["${APP_DIR}/input"]="/data/input"
 MOUNTS["${APP_DIR}/temp"]="/data/temp"
-MOUNTS["${APP_DIR}/custom_nodes"]="/data/custom_nodes"
+MOUNTS["${APP_DIR}/custom_nodes"]=$PLUGIN_DIR
 MOUNTS["${APP_DIR}/models"]="/data/models"
 MOUNTS["${APP_DIR}/user/default/workflows"]="/data/user/default/workflows"
 
@@ -57,6 +59,21 @@ for to_path in "${!MOUNTS[@]}"; do
   fi
 done
 
+echo "🔍 Searching for plugin requirements in $PLUGIN_DIR..."
+
+# 遍历插件目录，寻找 requirements.txt 并安装依赖
+for plugin in "$PLUGIN_DIR"/*; do
+    if [ -d "$plugin" ]; then
+        if [ -f "$plugin/requirements.txt" ]; then
+            echo "📦 Installing requirements for plugin: $(basename "$plugin")"
+            pip install --no-cache-dir -r "$plugin/requirements.txt"
+        else
+            echo "ℹ️ No requirements.txt found in: $(basename "$plugin")"
+        fi
+    fi
+done
+
+
 # 如果存在自定义启动脚本，运行它
 if [ -f "/data/config/comfy/startup.sh" ]; then
   echo "[INFO] Running custom startup script..."
@@ -64,6 +81,9 @@ if [ -f "/data/config/comfy/startup.sh" ]; then
   . /data/config/comfy/startup.sh
   popd > /dev/null
 fi
+
+
+echo "✅ All plugin dependencies processed."
 
 echo "[INFO] Entrypoint complete. Executing command: $*"
 exec "$@"

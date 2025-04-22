@@ -38,6 +38,11 @@ REPOS=(
   "git@github.com:Fannovel16/comfyui_controlnet_aux.git"
 
   "git@github.com:TTPlanetPig/Comfyui_TTP_Toolset.git"
+
+  "git@github.com:storyicon/comfyui_segment_anything.git"
+  "git@github.com:pythongosssss/ComfyUI-WD14-Tagger.git"
+  "git@github.com:nullquant/ComfyUI-BrushNet.git"
+
 )
 
 MAX_RETRIES=3
