@@ -43,6 +43,7 @@ REPOS=(
   "git@github.com:pythongosssss/ComfyUI-WD14-Tagger.git"
   "git@github.com:nullquant/ComfyUI-BrushNet.git"
 
+  "git@github.com:Suzie1/ComfyUI_Comfyroll_CustomNodes.git"
 )
 
 MAX_RETRIES=3
