@@ -66,6 +66,7 @@ download_if_not_exists "$CHECKPOINTS_DIR"/majicMIX-realistic-麦橘写实_v2威�
 download_if_not_exists "$VAE_DIR"/vae-ft-mse-840000-ema-pruned.safetensors "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors"
 download_if_not_exists "$LORAS_DIR"/场景-飘落的花_v1.0.safetensors "https://liblibai-online.liblib.cloud/web/model/6d7b61cdedae494e9311d971de3ac9d2/7674c2e106bf440a56fbec1db0e1f91643eb944e843c4eeb1a9b2a44c8b226e3.safetensors?auth_key=1745293215-83bbdd57c73340cba0f0b9d4d46b185d-0-af006cfa609205d3f48b41fe52c73574&attname=%E5%9C%BA%E6%99%AF-%E9%A3%98%E8%90%BD%E7%9A%84%E8%8A%B1_v1.0.safetensors"
 
+download_if_not_exists "$LORAS_DIR"/dit_lora.safetensors "https://huggingface.co/bytedance-research/UNO/resolve/main/dit_lora.safetensors"
 
 # 等待所有后台任务完成
 wait
