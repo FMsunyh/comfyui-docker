@@ -15,6 +15,8 @@ TARGET_DIR="$BASE_DIR/volumes/$APP/data/custom_nodes"
 
 # 仓库地址列表（请替换为你真实的10个仓库）
 REPOS=(
+  "git@github.com:jax-explorer/ComfyUI-UNO.git"
+  
   "git@github.com:Comfy-Org/ComfyUI-Manager.git"
   "git@github.com:justUmen/Bjornulf_custom_nodes.git"
   "git@github.com:yolain/ComfyUI-Easy-Use.git"
