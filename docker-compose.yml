@@ -81,6 +81,30 @@ services:
               device_ids: [ '0' ]
               capabilities: [ compute, utility ]
 
+  comfyui-dev2: &automatic
+    <<: *base_service
+    profiles: [ "comfyui-dev2" ]
+    container_name: comfyui-dev2
+    ports:
+      - "${WEBUI_PORT:-62805}:7860"
+    volumes:
+      - &v1 ./volumes/comfyui-dev/data:/data
+      - &v2 ./volumes/comfyui-dev/output:/output
+      - &v3 ./volumes:/volumes
+      - &v4 ./volumes/comfyui-dev/data/extra_model_paths.yaml:/home/aigc/app/extra_model_paths.yaml
+
+    environment:
+      - CLI_ARGS=--port 7860 --disable-cuda-malloc
+    networks:
+      - shared-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '3' ]
+              capabilities: [ compute, utility ]
+
   comfyui: &automatic
     <<: *base_service
     profiles: [ "comfyui" ]
