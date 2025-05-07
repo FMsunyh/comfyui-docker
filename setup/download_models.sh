@@ -68,6 +68,12 @@ download_if_not_exists "$LORAS_DIR"/场景-飘落的花_v1.0.safetensors "https:
 
 download_if_not_exists "$LORAS_DIR"/dit_lora.safetensors "https://huggingface.co/bytedance-research/UNO/resolve/main/dit_lora.safetensors"
 
+download_if_not_exists "$LORAS_DIR"/Detailed_Hands-000001.safetensors "https://civitai-delivery-worker-prod.5ac0637cfd0766c97916cefa3764fbdf.r2.cloudflarestorage.com/model/150004/detailedHands000001.5uPQ.safetensors?X-Amz-Expires=86400&response-content-disposition=attachment%3B%20filename%3D%22Detailed_Hands-000001.safetensors%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=e01358d793ad6966166af8b3064953ad/20250502/us-east-1/s3/aws4_request&X-Amz-Date=20250502T170821Z&X-Amz-SignedHeaders=host&X-Amz-Signature=6693c7392df619e570205e335d8611ae31746f8446fa4f795e746ae0213fbeac"
+download_if_not_exists "$LORAS_DIR"/"Hand v2.safetensors" "https://civitai-delivery-worker-prod.5ac0637cfd0766c97916cefa3764fbdf.r2.cloudflarestorage.com/model/1269491/hand20v2.iTXo.safetensors?X-Amz-Expires=86400&response-content-disposition=attachment%3B%20filename%3D%22Hand%20v2.safetensors%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=e01358d793ad6966166af8b3064953ad/20250502/us-east-1/s3/aws4_request&X-Amz-Date=20250502T162258Z&X-Amz-SignedHeaders=host&X-Amz-Signature=b6afeeb7d000b2c4483ca87d86b803a6eb035f51ef21cbaa5b0dfa38d7801a9a"
+
+download_if_not_exists "$CHECKPOINTS_DIR"/sd3.5_large.safetensors "https://huggingface.co/stabilityai/stable-diffusion-3.5-large/resolve/main/sd3.5_large.safetensors"
+
+
 # 等待所有后台任务完成
 wait
 
