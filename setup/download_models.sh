@@ -68,7 +68,7 @@ create_dir_if_not_exists "$ultralytics_segm"
 create_dir_if_not_exists "$sams_dir"
 
 # 下载文件列表
-download_if_not_exists "$CHECKPOINTS_DIR"/majicMIX-realistic-麦橘写实_v2威力加强典藏版.safetensors "https://liblibai-online.liblib.cloud/web/model/d7e2ac2f4a1f8853a327e38ec8b8fabc000205d17722ad055d84f2507c84b9ac.safetensors?auth_key=1745292980-b5c5fad68d814a798419e31288c833d1-0-f1e3851672c3120b4e4107e6181cb997&attname=majicMIX%20realistic%20%E9%BA%A6%E6%A9%98%E5%86%99%E5%AE%9E_v2%E5%A8%81%E5%8A%9B%E5%8A%A0%E5%BC%BA%E5%85%B8%E8%97%8F%E7%89%88.safetensors"
+download_if_not_exists "$CHECKPOINTS_DIR"/majicmixRealistic_v7.safetensors "https://civitai-delivery-worker-prod.5ac0637cfd0766c97916cefa3764fbdf.r2.cloudflarestorage.com/model/747825/majicmix7.Rkux.safetensors?X-Amz-Expires=86400&response-content-disposition=attachment%3B%20filename%3D%22majicmixRealistic_v7.safetensors%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=e01358d793ad6966166af8b3064953ad/20250509/us-east-1/s3/aws4_request&X-Amz-Date=20250509T183435Z&X-Amz-SignedHeaders=host&X-Amz-Signature=8131bebf2a31747ddbd236f49cd14885de36261abb39677850e0d5e49d84dbf8"
 download_if_not_exists "$VAE_DIR"/vae-ft-mse-840000-ema-pruned.safetensors "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors"
 download_if_not_exists "$LORAS_DIR"/场景-飘落的花_v1.0.safetensors "https://liblibai-online.liblib.cloud/web/model/6d7b61cdedae494e9311d971de3ac9d2/7674c2e106bf440a56fbec1db0e1f91643eb944e843c4eeb1a9b2a44c8b226e3.safetensors?auth_key=1745293215-83bbdd57c73340cba0f0b9d4d46b185d-0-af006cfa609205d3f48b41fe52c73574&attname=%E5%9C%BA%E6%99%AF-%E9%A3%98%E8%90%BD%E7%9A%84%E8%8A%B1_v1.0.safetensors"
 
