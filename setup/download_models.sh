@@ -22,6 +22,7 @@ UPSCALE_MODELS_DIR="$BASE_DIR/volumes/$APP/data/models/upscale_models"
 LORAS_DIR="$BASE_DIR/volumes/$APP/data/models/loras"
 ultralytics_bbox="$BASE_DIR/volumes/$APP/data/models/ultralytics/bbox"
 ultralytics_segm="$BASE_DIR/volumes/$APP/data/models/ultralytics/segm"
+sams_dir="$BASE_DIR/volumes/$APP/data/models/sams"
 
 # ========== 工具函数 ==========
 
@@ -64,6 +65,7 @@ create_dir_if_not_exists "$UPSCALE_MODELS_DIR"
 create_dir_if_not_exists "$LORAS_DIR"
 create_dir_if_not_exists "$ultralytics_bbox"
 create_dir_if_not_exists "$ultralytics_segm"
+create_dir_if_not_exists "$sams_dir"
 
 # 下载文件列表
 download_if_not_exists "$CHECKPOINTS_DIR"/majicMIX-realistic-麦橘写实_v2威力加强典藏版.safetensors "https://liblibai-online.liblib.cloud/web/model/d7e2ac2f4a1f8853a327e38ec8b8fabc000205d17722ad055d84f2507c84b9ac.safetensors?auth_key=1745292980-b5c5fad68d814a798419e31288c833d1-0-f1e3851672c3120b4e4107e6181cb997&attname=majicMIX%20realistic%20%E9%BA%A6%E6%A9%98%E5%86%99%E5%AE%9E_v2%E5%A8%81%E5%8A%9B%E5%8A%A0%E5%BC%BA%E5%85%B8%E8%97%8F%E7%89%88.safetensors"
@@ -81,6 +83,8 @@ download_if_not_exists "$CLIP_DIR"/clip_g.safetensors "https://huggingface.co/lo
 download_if_not_exists "$ultralytics_bbox"/hand_yolov9c.pt "https://huggingface.co/Bingsu/adetailer/resolve/main/hand_yolov9c.pt"
 download_if_not_exists "$ultralytics_bbox"/face_yolov9c.pt "https://huggingface.co/Bingsu/adetailer/resolve/main/face_yolov9c.pt"
 download_if_not_exists "$ultralytics_segm"/person_yolov8m-seg.pt "https://huggingface.co/Bingsu/adetailer/resolve/main/person_yolov8m-seg.pt"
+
+download_if_not_exists "$sams_dir"/sam_vit_b_01ec64.pth "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth"
 
 
 # 等待所有后台任务完成
