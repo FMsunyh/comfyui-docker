@@ -15,6 +15,7 @@ TARGET_DIR="$BASE_DIR/volumes/$APP/data/custom_nodes"
 
 # 仓库地址列表（请替换为你真实的10个仓库）
 REPOS=(
+  "git@github.com:edelvarden/comfyui_image_metadata_extension.git"
   "git@github.com:jags111/efficiency-nodes-comfyui.git"
   "git@github.com:TinyTerra/ComfyUI_tinyterraNodes.git"
 
